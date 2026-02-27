@@ -29,10 +29,52 @@ section {
   max-width: 100%;
   height: auto;
 }
+
+	nav {
+  background: #1e3c72;
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.nav-links a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  opacity: 0.7;
+}
 </style>
 </head>
 
 <body>
+	<nav>
+  <div class="nav-container">
+    <a href="#" class="logo">MVLO</a>
+    <div class="nav-links">
+      <a href="#お知らせ">お知らせ</a>
+      <a href="#MOD紹介">MOD紹介</a>
+      <a href="#ロゴ">ロゴ</a>
+    </div>
+  </div>
+</nav>
 	<div class="container">
 	<div style="text-align:center; padding:60px 20px; background:linear-gradient(135deg,#1e3c72,#2a5298); color:white;">
   <h1 style="font-size:48px; margin:0;">MVLO 同好会 Wiki</h1>
