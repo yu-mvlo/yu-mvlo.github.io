@@ -30,12 +30,18 @@ section {
   height: auto;
 }
 
-	nav {
-  background: #1e3c72;
+nav {
+  background: rgba(30, 60, 114, 0.7);
+  backdrop-filter: blur(10px);
   padding: 15px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
+  transition: background 0.3s ease;
+}
+
+nav.scrolled {
+  background: #1e3c72;
 }
 
 .nav-container {
@@ -66,8 +72,20 @@ section {
   scroll-behavior: smooth;
 }
 
-	nav {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+	.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 </style>
 </head>
@@ -209,6 +227,17 @@ section {
 <li><span>9月25日、yu氏がyoutubeにてMvLショート動画を初投稿。</span></li>
 <li><span>9月28日、yu氏が参戦コラ画像を作る。その後、グループ内に広まり、現在(2025年11月25日地点)は140近い画像数となった。</span></li>
 <li><span>9月29日、yu氏が25日に投稿したショートが1万再生を超える。</span></li>
+	<section id="動画">
+  <h2>伝説のショート</h2>
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/t61l5zH8Ho4"
+      title="YouTube video"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
 </ul><h3 id="【10月】" data-id="【10月】"><a class="anchor hidden-xs" href="#【10月】" title="【10月】"><span class="octicon octicon-link ph ph-link-simple-horizontal"></span></a><span>【10月】</span></h3><ul>
 <li><strong><span>10月4日、荒らし対策のためPlayer47Q5氏により現在のchaat部屋が開かれ、ブラウザチャットから順次移行した。</span></strong><br>
 <span>本当の目的はまったく違うが。本当の目的とは？</span><em><span>by yuto131</span></em></li>
@@ -2397,6 +2426,16 @@ section {
         }
     </script>
 		</div>
+	<script>
+window.addEventListener("scroll", function() {
+  const nav = document.querySelector("nav");
+  if (window.scrollY > 50) {
+    nav.classList.add("scrolled");
+  } else {
+    nav.classList.remove("scrolled");
+  }
+});
+</script>
 </body>
 
 </html>
