@@ -2522,14 +2522,15 @@ window.addEventListener("scroll", () => {
     }
   });
 });
-		
-const toggle = document.querySelector(".menu-toggle");
-const navMenu = document.querySelector(".nav-links");
 
-toggle.addEventListener("click", () => {
-  navMenu.classList.toggle("show");
-});
+	document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.querySelector(".menu-toggle");
+    const navMenu = document.querySelector(".nav-links");
 
+    toggle.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
+    });
+  });
 </script>
 </body>
 
