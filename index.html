@@ -146,6 +146,10 @@ nav.scrolled {
     display: block;
   }
 
+	.nav-links {
+  display: none;
+}
+
   .nav-links.show {
     display: flex;
   }
@@ -2528,7 +2532,7 @@ window.addEventListener("scroll", () => {
     const navMenu = document.querySelector(".nav-links");
 
     toggle.addEventListener("click", () => {
-      navMenu.classList.toggle("nav-links");
+      navMenu.classList.toggle("show");
     });
   });
 </script>
