@@ -2434,15 +2434,19 @@ if (localStorage.getItem("theme") === "dark") {
 }
 
 // クリックで切替＆保存
-darkBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
+const darkBtn = document.getElementById("darkModeToggle");
 
-  if (document.body.classList.contains("dark")) {
-    localStorage.setItem("theme", "dark");
-  } else {
-    localStorage.setItem("theme", "light");
-  }
-});
+if (darkBtn) {
+  darkBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+    }
+  });
+}
 		const fadeElements = document.querySelectorAll(".fade-in");
 
 window.addEventListener("scroll", () => {
