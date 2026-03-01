@@ -155,28 +155,6 @@ nav.scrolled {
   }
 }
 
-	/* ダークモード用 */
-body.dark {
-  background: #121212;
-  color: #f1f1f1;
-}
-
-body.dark section {
-  background: #1e1e1e;
-}
-
-body.dark nav {
-  background: #111;
-}
-
-	#darkToggle {
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  color: inherit;
-}
-
 #backToTop {
   position: fixed;
   bottom: 30px;
@@ -2458,32 +2436,6 @@ window.addEventListener("scroll", () => {
       el.classList.add("show");
     }
   });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  const backBtn = document.getElementById("backToTop");
-
-  if (!backBtn) {
-    console.log("backToTopが見つからない");
-    return;
-  }
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 200) {
-      backBtn.classList.add("show");
-    } else {
-      backBtn.classList.remove("show");
-    }
-  });
-
-  backBtn.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  });
-
 });
 </script>
 </body>
