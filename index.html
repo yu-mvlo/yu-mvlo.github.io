@@ -154,6 +154,28 @@ nav.scrolled {
     display: flex;
   }
 }
+
+	/* ダークモード用 */
+body.dark {
+  background: #121212;
+  color: #f1f1f1;
+}
+
+body.dark section {
+  background: #1e1e1e;
+}
+
+body.dark nav {
+  background: #111;
+}
+
+	#darkToggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: inherit;
+}
 </style>
 </head>
 
@@ -166,6 +188,7 @@ nav.scrolled {
     <div class="menu-toggle">☰</div>
 
     <div class="nav-links">
+		<button id="darkToggle">🌙</button>
       <a href="regulations.html">規定</a>
       <a href="#メンバーDojoの方々25名">メンバー紹介</a>
       <a href="#ロゴ">ロゴ</a>
@@ -2534,7 +2557,14 @@ window.addEventListener("scroll", () => {
     toggle.addEventListener("click", () => {
       navMenu.classList.toggle("show");
     });
-  });			
+  });	
+
+		const darkBtn = document.getElementById("darkToggle");
+
+darkBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+});
+		
 </script>
 </body>
 
