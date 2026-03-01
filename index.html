@@ -196,6 +196,17 @@ body.dark nav {
 #backToTop.show {
   display: block;
 }
+
+	.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
 </head>
 
@@ -2616,7 +2627,19 @@ backBtn.addEventListener("click", () => {
     behavior: "smooth"
   });
 });
-		
+
+		const fadeElements = document.querySelectorAll(".fade-in");
+
+window.addEventListener("scroll", () => {
+  fadeElements.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (elementTop < windowHeight - 100) {
+      el.classList.add("show");
+    }
+  });
+});
 </script>
 </body>
 
