@@ -3,14 +3,11 @@
 <html lang="en" theme="light">
 
 <head>
-    <meta charset="utf-8">
-   
-    <title>
-        前文 - HackMD
-    </title>
-   
-    <style>
-    body {
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
   font-family: sans-serif;
   margin: 0;
   background: #f4f6fa;
@@ -149,14 +146,86 @@ nav.scrolled {
     display: block;
   }
 
+	.nav-links {
+  display: none;
+}
+
   .nav-links.show {
     display: flex;
   }
 }
-	</style>
+
+	/* ダークモード用 */
+body.dark {
+  background: #121212;
+  color: #f1f1f1;
+}
+
+body.dark section {
+  background: #1e1e1e;
+}
+
+body.dark nav {
+  background: #111;
+}
+
+	#darkToggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: inherit;
+}
+
+	#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #1e3c72;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+#backToTop.show {
+  display: block;
+}
+
+	.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 </head>
 
 <body>
+	<div id="top"></div>
+	<nav>
+  <div class="nav-container">
+    <a href="#top" class="logo">Mario vs Luigi Online 同好会公式サイト</a>
+
+    <div class="menu-toggle">☰</div>
+
+    <div class="nav-links">
+		<button id="darkToggle">🌙</button>
+      <a href="regulations.html">規定</a>
+      <a href="#メンバーDojoの方々25名">メンバー紹介</a>
+      <a href="#ロゴ">ロゴ</a>
+    </div>
+  </div>
+</nav>
 		<div id="top"></div>
 	<nav>
   <div class="nav-container">
@@ -734,120 +803,6 @@ nav.scrolled {
             }, 100, "linear");
         }
 		
-        smoothHashScroll();
-        var toc = $('.ui-toc');
-        var tocAffix = $('.ui-affix-toc');
-        var tocDropdown = $('.ui-toc-dropdown');
-        //toc
-        tocDropdown.click(function (e) {
-            e.stopPropagation();
-        });
-
-        var enoughForAffixToc = true;
-
-        function generateScrollspy() {
-            $(document.body).scrollspy({
-                target: ''
-            });
-            $(document.body).scrollspy('refresh');
-            if (enoughForAffixToc) {
-                toc.hide();
-                tocAffix.show();
-            } else {
-                tocAffix.hide();
-                toc.show();
-            }
-            $(document.body).scroll();
-        }
-
-        function windowResize() {
-            //toc right
-            var paddingRight = parseFloat(markdown.css('padding-right'));
-            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
-            toc.css('right', right + 'px');
-            //affix toc left
-            var newbool;
-            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
-            //for ipad or wider device
-            if (rightMargin >= 133) {
-                newbool = true;
-                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
-                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
-                tocAffix.css('left', left + 'px');
-            } else {
-                newbool = false;
-            }
-            if (newbool != enoughForAffixToc) {
-                enoughForAffixToc = newbool;
-                generateScrollspy();
-            }
-        }
-        $(window).resize(function () {
-            windowResize();
-        });
-        $(document).ready(function () {
-            windowResize();
-            generateScrollspy();
-        });
-
-        //remove hash
-        function removeHash() {
-            window.location.hash = '';
-        }
-
-        var backtotop = $('.back-to-top');
-        var gotobottom = $('.go-to-bottom');
-
-        backtotop.click(function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            if (scrollToTop)
-                scrollToTop();
-            removeHash();
-        });
-        gotobottom.click(function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            if (scrollToBottom)
-                scrollToBottom();
-            removeHash();
-        });
-
-        var toggle = $('.expand-toggle');
-        var tocExpand = false;
-
-        checkExpandToggle();
-        toggle.click(function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            tocExpand = !tocExpand;
-            checkExpandToggle();
-        })
-
-        function checkExpandToggle () {
-            var toc = $('.ui-toc-dropdown .toc');
-            var toggle = $('.expand-toggle');
-            if (!tocExpand) {
-                toc.removeClass('expand');
-                toggle.text('Expand all');
-            } else {
-                toc.addClass('expand');
-                toggle.text('Collapse all');
-            }
-        }
-
-        function scrollToTop() {
-            $('body, html').stop(true, true).animate({
-                scrollTop: 0
-            }, 100, "linear");
-        }
-
-        function scrollToBottom() {
-            $('body, html').stop(true, true).animate({
-                scrollTop: $(document.body)[0].scrollHeight
-            }, 100, "linear");
-        }
-		
 window.addEventListener("scroll", function() {
   const nav = document.querySelector("nav");
   if (window.scrollY > 50) {
@@ -883,10 +838,60 @@ window.addEventListener("scroll", () => {
     const navMenu = document.querySelector(".nav-links");
 
     toggle.addEventListener("click", () => {
-      navMenu.classList.toggle("nav-links");
+      navMenu.classList.toggle("show");
     });
+  });	
+
+	const darkBtn = document.getElementById("darkToggle");
+
+// 保存されてる設定を読み込む
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+}
+
+// クリックで切替＆保存
+darkBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
+});
+
+		const backBtn = document.getElementById("backToTop");
+
+// スクロールで表示
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 200) {
+    backBtn.classList.add("show");
+  } else {
+    backBtn.classList.remove("show");
+  }
+});
+
+// クリックで上へ
+backBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
   });
-    </script>
+});
+
+		const fadeElements = document.querySelectorAll(".fade-in");
+
+window.addEventListener("scroll", () => {
+  fadeElements.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (elementTop < windowHeight - 100) {
+      el.classList.add("show");
+    }
+  });
+});
+</script>
 </body>
 
 </html>
