@@ -2442,6 +2442,18 @@ darkBtn.addEventListener("click", () => {
     localStorage.setItem("theme", "light");
   }
 });
+		const fadeElements = document.querySelectorAll(".fade-in");
+
+window.addEventListener("scroll", () => {
+  fadeElements.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (elementTop < windowHeight - 100) {
+      el.classList.add("show");
+    }
+  });
+});
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -2463,22 +2475,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
-
-		const fadeElements = document.querySelectorAll(".fade-in");
-
-window.addEventListener("scroll", () => {
-  fadeElements.forEach(el => {
-    const elementTop = el.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-
-    if (elementTop < windowHeight - 100) {
-      el.classList.add("show");
-    }
-  });
-});
-		
-console.log("JS動いてる");
-		
 </script>
 </body>
 
