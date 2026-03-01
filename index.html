@@ -176,6 +176,26 @@ body.dark nav {
   cursor: pointer;
   color: inherit;
 }
+
+	#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #1e3c72;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+#backToTop.show {
+  display: block;
+}
 </style>
 </head>
 
@@ -2374,6 +2394,7 @@ body.dark nav {
 </ul>
 </div><div class="toc-menu"><a class="expand-toggle" href="#">全部見る</a><a class="back-to-top" href="#">トップへ戻る</a><a class="go-to-bottom" href="#">底へ移る</a></div>
     </div>
+		<button id="backToTop">↑</button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
@@ -2575,6 +2596,25 @@ darkBtn.addEventListener("click", () => {
   } else {
     localStorage.setItem("theme", "light");
   }
+});
+
+		const backBtn = document.getElementById("backToTop");
+
+// スクロールで表示
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 200) {
+    backBtn.classList.add("show");
+  } else {
+    backBtn.classList.remove("show");
+  }
+});
+
+// クリックで上へ
+backBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 });
 		
 </script>
