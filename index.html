@@ -2459,6 +2459,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const backBtn = document.getElementById("backToTop");
 
+  if (!backBtn) {
+    console.log("backToTopが見つからない");
+    return;
+  }
+
   window.addEventListener("scroll", () => {
     if (window.scrollY > 200) {
       backBtn.classList.add("show");
