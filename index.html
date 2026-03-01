@@ -2612,23 +2612,25 @@ darkBtn.addEventListener("click", () => {
   }
 });
 
-		const backBtn = document.getElementById("backToTop");
+document.addEventListener("DOMContentLoaded", () => {
 
-// スクロールで表示
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 200) {
-    backBtn.classList.add("show");
-  } else {
-    backBtn.classList.remove("show");
-  }
-});
+  const backBtn = document.getElementById("backToTop");
 
-// クリックで上へ
-backBtn.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+      backBtn.classList.add("show");
+    } else {
+      backBtn.classList.remove("show");
+    }
   });
+
+  backBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+
 });
 
 		const fadeElements = document.querySelectorAll(".fade-in");
