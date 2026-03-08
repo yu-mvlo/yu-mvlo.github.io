@@ -235,6 +235,40 @@ footer a:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
+
+.news-box{
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.1);
+  max-width:700px;
+  margin:30px auto;
+}
+
+.news-list{
+  list-style:none;
+  padding:0;
+}
+
+.news-list li{
+  padding:10px 0;
+  border-bottom:1px solid #eee;
+}
+
+.pinned{
+  font-weight:bold;
+  color:#1e3c72;
+}
+
+.new-badge{
+  background:#ff3b3b;
+  color:white;
+  font-size:11px;
+  padding:3px 7px;
+  border-radius:6px;
+  margin-left:8px;
+  font-weight:bold;
+}
 </style>
 </head>
 
@@ -489,8 +523,38 @@ window.addEventListener("scroll", () => {
     }
   });
 });
-		
+
+const list = document.querySelector(".news-list");
+const items = Array.from(list.children);
+
+const pinned = items.filter(i => i.classList.contains("pinned"));
+const normal = items.filter(i => i.dataset.date);
+
+normal.sort((a,b)=>{
+  return new Date(b.dataset.date) - new Date(a.dataset.date);
+});
+
+list.innerHTML = "";
+[...pinned,...normal].forEach(i=>list.appendChild(i));
+
+const now = new Date();
+
+normal.forEach(item=>{
+  const date = new Date(item.dataset.date);
+  const diff = (now-date)/(1000*60*60*24);
+
+  if(diff<=7){
+    const badge=document.createElement("span");
+    badge.textContent="NEW";
+    badge.className="new-badge";
+    item.appendChild(badge);
+  }
+});
+
 </script>
+
+
+		
 <hr><hr>
 <div id="disqus_thread"></div>
 <script>
