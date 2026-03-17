@@ -196,19 +196,83 @@ nav.scrolled {
   transform: translateY(0);
 }
 
-	footer {
-  background: #1e3c72;   /* 背景色 */
-  color: white;           /* 文字色 */
-  text-align: center;     /* 中央揃え */
-  padding: 20px 0;        /* 上下余白 */
+.footer{
+background:#1f1f1f;
+color:white;
+padding:40px 20px;
 }
-footer a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
+
+.footer-container{
+display:flex;
+justify-content:space-between;
+max-width:1000px;
+margin:auto;
+flex-wrap:wrap;
 }
-footer a:hover {
-  opacity: 0.7;           /* ホバーで半透明 */
+
+.footer-column{
+width:250px;
+margin-bottom:20px;
+}
+
+.footer-column h3{
+margin-bottom:10px;
+}
+
+.footer-column ul{
+list-style:none;
+padding:0;
+}
+
+.footer-column a{
+color:#ccc;
+text-decoration:none;
+}
+
+.footer-column a:hover{
+color:white;
+}
+
+.footer-bottom{
+border-top:1px solid #444;
+margin-top:20px;
+padding-top:10px;
+text-align:center;
+color:#aaa;
+}
+
+/* SNSアイコン */
+
+.sns-icons a{
+display:flex;
+align-items:center;
+gap:8px;
+margin-bottom:8px;
+}
+
+.sns-icons img{
+width:20px;
+height:20px;
+filter:invert(1);
+}
+
+/* スマホ対応 */
+
+@media (max-width:700px){
+
+.footer-container{
+flex-direction:column;
+text-align:center;
+}
+
+.footer-column{
+width:100%;
+}
+
+.sns-icons a{
+justify-content:center;
+}
+
 }
 
 .home-buttons {
@@ -611,13 +675,33 @@ normal.forEach(item=>{
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 		<button id="backToTop">↑</button>
-		 <footer>
-    © 2025 Mario vs Luigi Online同好会
-    <div>
-      <a href="https://discord.gg/pdFnaVTfHz" target="_blank">Discord</a>
-	　<a href="regulations.html" target="_blank">憲法・規定</a>
-    </div>
-  </footer>
+<footer class="footer">
+<div class="footer-container">
+<div class="footer-column">
+<h3>MvLO同好会</h3>
+<p>Mario vs Luigi Online 同好会公式サイト</p>
+</div>
+<div class="footer-column">
+<h3>ページ</h3>
+<ul>
+<li><a href="index.html">ホーム</a></li>
+<li><a href="member.html">メンバー</a></li>
+<li><a href="history.html">沿革</a></li>
+<li><a href="regulations.html">憲法(規定)</a></li>
+<li><a href="tournament.html">大会開催の沿革と予定</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h3>Discord参加</h3>
+<a href="https://discord.gg/mCdQGTxTQy">
+<img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/discord.svg">
+同好会公式Discord
+</a>
+</div>
+<div class="footer-bottom">
+<p>© 2026 MvLO同好会</p>
+</div>
+</footer>
 </body>
 
 </html>
