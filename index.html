@@ -373,6 +373,37 @@ justify-content:center;
 .card-links a:hover{
   background:#1f5edb;
 }
+
+.discord-box{
+text-align:center;
+padding:40px 20px;
+}
+
+.discord-button{
+display:inline-block;
+background:#5865F2;
+color:white;
+padding:14px 28px;
+font-size:18px;
+border-radius:8px;
+text-decoration:none;
+transition:0.3s;
+}
+
+.discord-button:hover{
+background:#4752c4;
+transform:scale(1.05);
+box-shadow:0 6px 20px rgba(0,0,0,0.3);
+}
+
+@media (max-width:600px){
+
+.discord-button{
+width:80%;
+font-size:16px;
+}
+
+}
 </style>
 </head>
 
@@ -689,15 +720,13 @@ normal.forEach(item=>{
 <li><a href="history.html">沿革</a></li>
 <li><a href="regulations.html">憲法(規定)</a></li>
 <li><a href="tournament.html">大会開催の沿革と予定</a></li>
-</ul>
-</div>
-<div class="sns-icons">
-<h3>Discord参加</h3>
-<a href="https://discord.gg/mCdQGTxTQy">
-<img src="https://img2.pic.in.th/pic/discord-logo-icon-editorial-free-vector.webp">
-同好会公式Discord
-</a>
-</div>
+</ul></div>
+<div class="discord-box">
+<h2>Discord参加</h2>
+<p>同好会公式Discordはこちら</p>
+<a href="https://discord.gg/mCdQGTxTQy" class="discord-button">
+Discordサーバーに参加
+</a></div>
 <div class="footer-bottom">
 <p>© 2026 Mario vs Luigi Online 同好会</p>
 </div>
