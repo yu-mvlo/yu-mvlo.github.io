@@ -210,6 +210,118 @@ footer a {
 footer a:hover {
   opacity: 0.7;           /* ホバーで半透明 */
 }
+
+/* メンバー紹介エリア */
+.members{
+text-align:center;
+padding:40px 20px;
+}
+
+/* カードを並べる */
+.member-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+max-width:1100px;
+margin:auto;
+}
+
+/* メンバーカード */
+.member-card{
+background:#2a2a2a;
+color:white;
+padding:20px;
+border-radius:12px;
+transition:0.3s;
+}
+
+/* ホバー */
+.member-card:hover{
+transform:translateY(-5px);
+box-shadow:0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* アイコン横並び */
+.icon-row{
+display:flex;
+justify-content:center;
+gap:8px;
+margin-bottom:10px;
+flex-wrap:wrap;
+}
+
+/* アイコン */
+.icon-row img{
+width:40px;
+height:40px;
+border-radius:50%;
+transition:0.2s;
+}
+
+/* アイコンホバー */
+.icon-row img:hover{
+transform:scale(1.2);
+}
+
+/* 名前 */
+.member-card h3{
+margin:10px 0;
+font-size:20px;
+}
+
+/* 説明文 */
+.description{
+margin-top:10px;
+color:#ccc;
+font-size:14px;
+line-height:1.5;
+}
+
+/* 役職バッジ */
+.badge{
+font-size:12px;
+padding:3px 8px;
+border-radius:6px;
+margin-left:6px;
+}
+
+.admin{
+background:#ffcc00;
+color:black;
+}
+
+.moderator{
+background:#00bcd4;
+color:white;
+}
+
+.member{
+background:#666;
+color:white;
+}
+
+/* SNSリンク */
+.social-links{
+margin-top:12px;
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.social-links a{
+text-decoration:none;
+background:#444;
+color:white;
+padding:6px 10px;
+border-radius:6px;
+font-size:13px;
+transition:0.2s;
+}
+
+.social-links a:hover{
+background:#666;
+}
 </style>
 </head>
 
