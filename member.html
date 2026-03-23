@@ -333,6 +333,27 @@ color:white;
 background:#666;
 color:white;
 }
+
+#memberSearch{
+width:100%;
+max-width:400px;
+padding:12px;
+margin:30px auto;
+display:block;
+
+border-radius:10px;
+border:1px solid #555;
+
+background:#2a2a2a;
+color:white;
+
+font-size:16px;
+}
+
+#memberSearch:focus{
+outline:none;
+border:1px solid #00aaff;
+}
 </style>
 </head>
 
@@ -355,7 +376,7 @@ color:white;
   <h1 style="font-size:48px; margin:0;">MVLO 同好会 所属メンバー</h1>
   <p style="font-size:20px; opacity:0.9;">Mario vs Luigi Online 同好会公式サイト</p>
 </div>
-
+<input type="text" id="memberSearch" placeholder="メンバー検索..." onkeyup="searchMembers()">
 <h1>メンバー紹介</h1>
 <section class="members"><div class="member-grid">
 <div class="member-card fade-in">
@@ -1906,7 +1927,26 @@ window.addEventListener("scroll", () => {
     }
   });
 });
-		
+
+function searchMembers() {
+
+let input = document.getElementById("memberSearch").value.toLowerCase();
+let cards = document.querySelectorAll(".member-card");
+
+cards.forEach(card => {
+
+let name = card.querySelector("h3").textContent.toLowerCase();
+
+if(name.includes(input)){
+card.style.display="block";
+}else{
+card.style.display="none";
+}
+
+});
+
+}
+
 </script>
 		
 </body>
