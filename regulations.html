@@ -210,6 +210,49 @@ footer a {
 footer a:hover {
   opacity: 0.7;           /* ホバーで半透明 */
 }
+
+/* 目次ボックス */
+.toc{
+background:#2a2a2a;
+padding:15px;
+border-radius:10px;
+max-width:400px;
+margin-bottom:25px;
+}
+
+/* リスト */
+.toc ul{
+list-style:none;
+padding-left:0;
+margin-top:10px;
+}
+
+/* 目次項目 */
+.toc li{
+margin:6px 0;
+}
+
+/* リンク */
+.toc a{
+text-decoration:none;
+color:#66ccff;
+font-weight:500;
+}
+
+/* ホバー */
+.toc a:hover{
+text-decoration:underline;
+}
+
+/* 矢印 */
+.toc li::before{
+content:"▶ ";
+color:#66ccff;
+}
+
+.important{
+color:red !important;
+}
 </style>
 </head>
 
@@ -232,7 +275,6 @@ footer a:hover {
   <h1 style="font-size:48px; margin:0;">MVLO 同好会憲法・規定</h1>
   <p style="font-size:20px; opacity:0.9;">Mario vs Luigi Online 同好会公式サイト</p>
 </div>
-<details>
 <summary><b>目次</b></summary>
 <p><span class="toc"><ul>
 <li><a href="#前文" title="前文">前文</a></li>
@@ -242,7 +284,7 @@ footer a:hover {
 </ul>
 </li>
 <li><a href="#第2章-メンバー資格" title="第2章 メンバー資格">第2章 メンバー資格</a><ul>
-<li><a href="#第3条-加入" title="第3条 加入">第3条 加入</a><ul>
+<li><a href="#第3条-加入" title="第3条 加入" class="important">第3条 加入</a><ul>
 <li><a href="#第1項-加入条件" title="第1項 加入条件">第1項 加入条件</a></li>
 <li><a href="#第2項-交流実績の定義" title="第2項 交流実績の定義">第2項 交流実績の定義</a></li>
 <li><a href="#第3項-加入手続" title="第3項 加入手続">第3項 加入手続</a></li>
@@ -250,16 +292,16 @@ footer a:hover {
 <li><a href="#第5項-保留・否認時" title="第5項 保留・否認時">第5項 保留・否認時</a></li>
 </ul>
 </li>
-<li><a href="#第4条-資格停止および除名" title="第4条 資格停止および除名">第4条 資格停止および除名</a></li>
+<li><a href="#第4条-資格停止および除名" title="第4条 資格停止および除名" class="important">第4条 資格停止および除名</a></li>
 </ul>
 </li>
 <li><a href="#第3章-行動規範" title="第3章 行動規範">第3章 行動規範</a><ul>
-<li><a href="#第5条-基本原則" title="第5条 基本原則">第5条 基本原則</a></li>
-<li><a href="#第6条-禁止行為" title="第6条 禁止行為">第6条 禁止行為</a></li>
+<li><a href="#第5条-基本原則" title="第5条 基本原則" class="important">第5条 基本原則</a></li>
+<li><a href="#第6条-禁止行為" title="第6条 禁止行為" class="important">第6条 禁止行為</a></li>
 </ul>
 </li>
 <li><a href="#第4章-運営" title="第4章 運営">第4章 運営</a><ul>
-<li><a href="#第7条-管理者及び選挙" title="第7条 管理者及び選挙">第7条 管理者及び選挙</a><ul>
+<li><a href="#第7条-管理者及び選挙" title="第7条 管理者及び選挙" class="important">第7条 管理者及び選挙</a><ul>
 <li><a href="#第1項" title="第1項">第1項</a></li>
 <li><a href="#第2項" title="第2項">第2項</a></li>
 <li><a href="#第3項" title="第3項">第3項</a></li>
@@ -275,11 +317,11 @@ footer a:hover {
 <li><a href="#第13項-濫用防止" title="第13項 濫用防止">第13項 濫用防止</a></li>
 </ul>
 </li>
-<li><a href="#第8条-措置の種類" title="第8条 措置の種類">第8条 措置の種類</a></li>
+<li><a href="#第8条-措置の種類" title="第8条 措置の種類" class="important">第8条 措置の種類</a></li>
 </ul>
 </li>
 <li><a href="#第5章-規定改定" title="第5章 規定改定">第5章 規定改定</a><ul>
-<li><a href="#第9条-改定" title="第9条 改定">第9条 改定</a></li>
+<li><a href="#第9条-改定" title="第9条 改定" class="important">第9条 改定</a></li>
 <li><a href="#第10条-施行" title="第10条 施行">第10条 施行</a></li>
 </ul>
 </li>
@@ -315,19 +357,19 @@ footer a:hover {
 </li>
 <li><a href="#第11章-懲戒手続き" title="第11章 懲戒手続き">第11章 懲戒手続き</a><ul>
 <li><a href="#第26条-懲戒の原則" title="第26条 懲戒の原則">第26条 懲戒の原則</a></li>
-<li><a href="#第27条-懲戒対象" title="第27条 懲戒対象">第27条 懲戒対象</a></li>
-<li><a href="#第28条-懲戒の種類" title="第28条 懲戒の種類">第28条 懲戒の種類</a></li>
+<li><a href="#第27条-懲戒対象" title="第27条 懲戒対象" class="important">第27条 懲戒対象</a></li>
+<li><a href="#第28条-懲戒の種類" title="第28条 懲戒の種類" class="important">第28条 懲戒の種類</a></li>
 <li><a href="#第29条-手続きの流れ" title="第29条 手続きの流れ">第29条 手続きの流れ</a></li>
-<li><a href="#第30条-緊急措置" title="第30条 緊急措置">第30条 緊急措置</a></li>
+<li><a href="#第30条-緊急措置" title="第30条 緊急措置" class="important">第30条 緊急措置</a></li>
 </ul>
 </li>
 <li><a href="#第12章-情報セキュリティ" title="第12章 情報セキュリティ">第12章 情報セキュリティ</a><ul>
 <li><a href="#第31条-情報管理の原則" title="第31条 情報管理の原則">第31条 情報管理の原則</a></li>
-<li><a href="#第32条-禁止事項" title="第32条 禁止事項">第32条 禁止事項</a></li>
+<li><a href="#第32条-禁止事項" title="第32条 禁止事項" class="important">第32条 禁止事項</a></li>
 <li><a href="#第33条-事故対応" title="第33条 事故対応">第33条 事故対応</a></li>
 </ul>
 </li>
-<li><a href="#第13章-臨時地震情報伝達局" title="第13章 臨時地震情報伝達局">第13章 臨時地震情報伝達局</a><ul>
+<li><a href="#第13章-臨時地震情報伝達局" title="第13章 臨時地震情報伝達局" class="important">第13章 臨時地震情報伝達局</a><ul>
 <li><a href="#第34条-設置目的" title="第34条 設置目的">第34条 設置目的</a></li>
 <li><a href="#第35条-管理者" title="第35条 管理者">第35条 管理者</a></li>
 <li><a href="#第36条-機能" title="第36条 機能">第36条 機能</a></li>
@@ -341,7 +383,7 @@ footer a:hover {
 </li>
 </ul>
 </span></p>
-</details><h1 id="前文" data-id="前文" class="fade-in"><a class="anchor hidden-xs" href="#前文" title="前文"><span class="octicon octicon-link ph ph-link-simple-horizontal"></span></a><span>前文</span></h1><p><span>NSMB - Mario vs Luigi Online 同好会（以下、「本同好会」という。）は、New Super Mario Bros.シリーズに関連するオンライン対戦・協力活動の健全な発展および、参加メンバーの安全かつ公平な活動環境の確保を目的として設立された。</span><br>
+<h1 id="前文" data-id="前文" class="fade-in"><a class="anchor hidden-xs" href="#前文" title="前文"><span class="octicon octicon-link ph ph-link-simple-horizontal"></span></a><span>前文</span></h1><p><span>NSMB - Mario vs Luigi Online 同好会（以下、「本同好会」という。）は、New Super Mario Bros.シリーズに関連するオンライン対戦・協力活動の健全な発展および、参加メンバーの安全かつ公平な活動環境の確保を目的として設立された。</span><br>
 <span>本同好会は、オンラインコミュニティとしての社会的責任を認識し、透明性、公平性、継続性および信頼性を重視した運営を行う。</span><br>
 <span>本規定は、本同好会の運営方針、メンバーの権利および義務、ならびに秩序維持に必要な事項を定め、安定したコミュニティ活動を実現するために制定するものである。</span></p><h1 id="第1章-総則" data-id="第1章-総則" class="fade-in"><a class="anchor hidden-xs" href="#第1章-総則" title="第1章-総則"><span class="octicon octicon-link ph ph-link-simple-horizontal"></span></a><span>第1章 総則</span></h1><h2 id="第1条-適用範囲" data-id="第1条-適用範囲" class="fade-in"><a class="anchor hidden-xs" href="#第1条-適用範囲" title="第1条-適用範囲"><span class="octicon octicon-link ph ph-link-simple-horizontal"></span></a><span>第1条 適用範囲</span></h2><p><span>本規定は、本同好会に所属するすべてのメンバーおよび本同好会活動に参加するすべての者に適用する。</span></p><h2 id="第2条-定義" data-id="第2条-定義" class="fade-in"><a class="anchor hidden-xs" href="#第2条-定義" title="第2条-定義"><span class="octicon octicon-link ph ph-link-simple-horizontal"></span></a><span>第2条 定義</span></h2><p><span>本規定における用語の定義は以下のとおりとする。</span><br>
 <span>MvLO：NSMB - Mario vs Luigi Online</span><br>
