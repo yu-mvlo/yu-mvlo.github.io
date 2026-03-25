@@ -196,21 +196,77 @@ nav.scrolled {
   transform: translateY(0);
 }
 
-	footer {
-  background: #1e3c72;   /* 背景色 */
-  color: white;           /* 文字色 */
-  text-align: center;     /* 中央揃え */
-  padding: 20px 0;        /* 上下余白 */
-}
-footer a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-}
-footer a:hover {
-  opacity: 0.7;           /* ホバーで半透明 */
+.footer{
+background:#1f1f1f;
+color:white;
+padding:40px 20px;
 }
 
+.footer-container{
+display:flex;
+justify-content:space-between;
+max-width:1000px;
+margin:auto;
+flex-wrap:wrap;
+}
+
+.footer-column{
+width:250px;
+margin-bottom:20px;
+}
+
+.footer-column h3{
+margin-bottom:10px;
+}
+
+.footer-column ul{
+list-style:none;
+padding:0;
+}
+
+.footer-column a{
+color:#ccc;
+text-decoration:none;
+}
+
+.footer-column a:hover{
+color:white;
+}
+
+.footer-bottom{
+border-top:1px solid #444;
+margin-top:20px;
+padding-top:10px;
+text-align:center;
+color:#aaa;
+}
+
+/* SNSアイコン */
+
+.sns-icons a{
+display:flex;
+align-items:center;
+gap:8px;
+margin-bottom:10px;
+}
+
+.sns-icons img{
+width:24px;
+height:24px;
+}
+
+/* スマホ対応 */
+
+@media (max-width:700px){
+
+.footer-container{
+flex-direction:column;
+text-align:center;
+}
+
+.footer-column{
+width:100%;
+}
 /* 目次ボックス */
 .toc{
 background:#2a2a2a;
@@ -462,13 +518,32 @@ font-weight:bold;
 </ul><h2 id="第37条-情報源" data-id="第37条-情報源" class="fade-in"><a class="anchor hidden-xs" href="#第37条-情報源" title="第37条-情報源"><span class="octicon octicon-link ph ph-link-simple-horizontal"></span></a><span>第37条 情報源</span></h2><p><span>情報伝達局は、原則として公的機関またはそれに準ずる信頼性の高い情報源を基に情報共有を行う。</span></p><h2 id="第38条-優先権" data-id="第38条-優先権" class="fade-in"><a class="anchor hidden-xs" href="#第38条-優先権" title="第38条-優先権"><span class="octicon octicon-link ph ph-link-simple-horizontal"></span></a><span>第38条 優先権</span></h2><p><span>災害発生時は、安全確保を最優先とし、必要に応じて通常活動より優先して情報伝達を行う。</span></p><h2 id="第39条-誤情報防止" data-id="第39条-誤情報防止" class="fade-in"><a class="anchor hidden-xs" href="#第39条-誤情報防止" title="第39条-誤情報防止"><span class="octicon octicon-link ph ph-link-simple-horizontal"></span></a><span>第39条 誤情報防止</span></h2><p><span>未確認情報の拡散を禁止する。</span><br>
 <span>情報共有時は、可能な限り情報源を明示する。</span></p><h2 id="第40条-個人情報配慮" data-id="第40条-個人情報配慮" class="fade-in"><a class="anchor hidden-xs" href="#第40条-個人情報配慮" title="第40条-個人情報配慮"><span class="octicon octicon-link ph ph-link-simple-horizontal"></span></a><span>第40条 個人情報配慮</span></h2><p><span>安否確認等において取得した情報は、必要最小限の範囲で取り扱う。</span></p><h2 id="第41条-非常時の特例" data-id="第41条-非常時の特例" class="fade-in"><a class="anchor hidden-xs" href="#第41条-非常時の特例" title="第41条-非常時の特例"><span class="octicon octicon-link ph ph-link-simple-horizontal"></span></a><span>第41条 非常時の特例</span></h2><p><span>災害等の緊急事態においては、管理者は迅速な安全確保を目的として、通常規定と異なる対応を行うことができる。</span></p><h2 id="第42条-平常時運用" data-id="第42条-平常時運用" class="fade-in"><a class="anchor hidden-xs" href="#第42条-平常時運用" title="第42条-平常時運用"><span class="octicon octicon-link ph ph-link-simple-horizontal"></span></a><span>第42条 平常時運用</span></h2><p><span>平常時においては、情報伝達局は常設義務を負わない。</span></p></div>
 <button id="backToTop">↑</button>
-		 <footer>
-    © 2025 Mario vs Luigi Online同好会
-    <div>
-      <a href="https://discord.gg/pdFnaVTfHz" target="_blank">Discord</a>
-	  <a href="#top" target="_blank">憲法・規定</a>
-    </div>
-  </footer>
+<footer class="footer">
+<div class="footer-container">
+<div class="footer-column">
+<h3>Mario vs Luigi Online 同好会公式サイト</h3>
+<p>「Mario vs Luigi Online」を楽しむコミュニティ</p>
+<img src="https://cdn2.steamgriddb.com/logo_thumb/7882fa96d3b276cffe67fb3dd5c9deb7.png">
+</div>
+<div class="footer-column">
+<h3>ページ</h3>
+<ul>
+<li><a href="index.html">ホーム</a></li>
+<li><a href="member.html">メンバー</a></li>
+<li><a href="history.html">沿革</a></li>
+<li><a href="regulations.html">憲法(規定)</a></li>
+<li><a href="tournament.html">大会開催の沿革と予定</a></li>
+</ul></div>
+<div class="discord-box">
+<h3>Discordサーバー参加</h3>
+<p>同好会公式Discordはこちら</p>
+<a href="https://discord.gg/mCdQGTxTQy" class="discord-button">
+Discordサーバーに参加
+</a></div>
+<div class="footer-bottom">
+<p>© 2026 Mario vs Luigi Online 同好会</p>
+</div>
+</footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
