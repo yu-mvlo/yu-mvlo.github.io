@@ -525,7 +525,6 @@ let submitted = false;
 </script>
 <iframe name="hidden_iframe" style="display:none;" onload="if(submitted){document.getElementById('thanks').style.display='block';}">
 </iframe></section>
-<section class="card fade-in">
 <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <div id="comments"></div>
 <script>
@@ -546,7 +545,7 @@ d3.csv("https://docs.google.com/spreadsheets/d/1zANzq3Jah4V7fVqmaRr4TH5alno0RKA5
 	}
 	d3.select("#comments").html(text);
 });
-</script></section>
+</script>
 <button id="backToTop">↑</button>
 <footer class="footer">
 <div class="footer-container">
