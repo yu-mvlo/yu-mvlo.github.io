@@ -528,11 +528,11 @@ let submitted = false;
 <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <div id="comments"></div>
 <script>
-d3.csv("https://docs.google.com/spreadsheets/d/1zANzq3Jah4V7fVqmaRr4TH5alno0RKA5kWpI5cRMUcs/export?format=csv&range=A2:D", function(error, data){
+d3.csv("https://docs.google.com/spreadsheets/d/1zANzq3Jah4V7fVqmaRr4TH5alno0RKA5kWpI5cRMUcs/export?format=csv&range=A3:D", function(error, data){
 data.reverse();
 function replaceText(text){
-	if(!text) return "";
-	return text.replace(/</g,"&lt;");
+return text
+.replace(/</g, "&lt;")
 }
 
 var text = "";
@@ -541,8 +541,7 @@ var timestamp = replaceText(data[i][Object.keys(data[i])[0]]);
 var name = replaceText(data[i][Object.keys(data[i])[1]]);
 var mail = replaceText(data[i][Object.keys(data[i])[2]]);
 var comments = replaceText(data[i][Object.keys(data[i])[3]]);
-
-text += i+1 + " 名前: <a href='mailto:"+mail+"'>"+name+"</a> "+timestamp+"<pre>"+comments+"</pre>";
+text += i+1 + " 名前: <a href=\"mailto:" + mail + "\">" + name + "</a> " + timestamp + "<pre>" + comments + "</pre>";
 }
 d3.select("#comments").html(text);
 });
