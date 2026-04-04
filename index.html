@@ -537,10 +537,10 @@ function replaceText(text){
 
 var text = "";
 for(var i=0;i<data.length;i++){
-var name = replaceText(data[i]["名前(必須)"]);
-var mail = replaceText(data[i]["メールアドレス(任意)"]);
-var timestamp = replaceText(data[i]["タイムスタンプ"]);
-var comments = replaceText(data[i]["コメント(必須)"]);
+var timestamp = replaceText(data[i][Object.keys(data[i])[0]]);
+var name = replaceText(data[i][Object.keys(data[i])[1]]);
+var mail = replaceText(data[i][Object.keys(data[i])[2]]);
+var comments = replaceText(data[i][Object.keys(data[i])[3]]);
 
 text += i+1 + " 名前: <a href='mailto:"+mail+"'>"+name+"</a> "+timestamp+"<pre>"+comments+"</pre>";
 }
