@@ -520,6 +520,27 @@ onsubmit="return test()">
 <p id="thanks" style="display:none;">コメントは正常に送信されました。コメントありがとうございます。</p>
 </div>
 <iframe name="hidden_iframe" style="display:none;" onload="if(submitted){document.getElementById('thanks').style.display='block';}"></iframe>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<div id="comments"></div>
+<script>
+d3.csv("https://docs.google.com/spreadsheets/d/【スプレッドシートのID】/export?format=csv&range=A3:D", function(error, data){
+	data.reverse();  // 読み込んだデータを逆順にする
+	function replaceText(text) {
+		return text
+			.replace(/</g, "&lt;")
+			//.replace(/置き換え前の文字列/g, "置き換え後の文字列");
+	}
+	var text = "";
+	for(var i=0; i<data.length; i++){
+		var name = replaceText(data[i].Name);
+		var mail = replaceText(data[i].Mail);
+		var timestamp = replaceText(data[i].Timestamp);
+		var comments = replaceText(data[i].Comments);
+		text += i+1 + " 名前: <a href=\"mailto:" + mail + "\">" + name + "</a> " + timestamp + "<pre>" + comments + "</pre>";
+	}
+	d3.select("#comments").html(text);
+});
+</script>
 <button id="backToTop">↑</button>
 <footer class="footer">
 <div class="footer-container">
