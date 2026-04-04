@@ -404,6 +404,47 @@ font-size:16px;
 }
 
 }
+
+.form-box{
+max-width:500px;
+margin:40px auto;
+padding:25px;
+background:white;
+border-radius:12px;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.form-box input,
+.form-box textarea{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border-radius:8px;
+border:1px solid #ccc;
+font-size:14px;
+}
+
+.form-box input:focus,
+.form-box textarea:focus{
+outline:none;
+border:1px solid #1e3c72;
+}
+
+.form-box button{
+width:100%;
+padding:12px;
+background:#1e3c72;
+color:white;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.form-box button:hover{
+background:#2a5298;
+}
 </style>
 </head>
 
@@ -466,13 +507,19 @@ font-size:16px;
   <a href="history.html">沿革を見る →</a>
   <a href="member.html">メンバー紹介を見る →</a>
 </div></section>
-<form action="https://docs.google.com/forms/d/e/1FAIpQLSdDZKwcmcmU34WUhhLeMNtN-_dvu8KA1xxyE4QhfpwOgFd8uQ/formResponse" target="hidden_iframe" method="post" onsubmit="return test(this.wcheck.value)">
-<p><input name="entry.1305317978" placeholder="名前" value="名無し" required></p>
-<p><input name="entry.1029779029" placeholder="メールアドレス" type="email"></p>
-<p><textarea name="entry.380796284" placeholder="コメント" rows="10" cols="40" maxlength="300" id="wcheck" required></textarea></p>
-<input type="submit" id="submitbutton" value="送信">
+<div class="form-box">
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSdDZKwcmcmU34WUhhLeMNtN-_dvu8KA1xxyE4QhfpwOgFd8uQ/formResponse"
+method="post"
+target="hidden_iframe"
+onsubmit="return test()">
+<input name="entry.1305317978" placeholder="名前" required>
+<input name="entry.1029779029" placeholder="メールアドレス" type="email">
+<textarea name="entry.380796284" placeholder="コメント" rows="5" maxlength="300" required></textarea>
+<button id="submitbutton" type="submit">送信</button>
 </form>
-<iframe onload='if(submitted){window.location="";}' id=hidden_iframe name=hidden_iframe style=display:none></iframe>
+<p id="thanks" style="display:none;">コメントは正常に送信されました。コメントありがとうございます。</p>
+</div>
+<iframe name="hidden_iframe" style="display:none;" onload="if(submitted){document.getElementById('thanks').style.display='block';}"></iframe>
 <button id="backToTop">↑</button>
 <footer class="footer">
 <div class="footer-container">
@@ -726,19 +773,49 @@ normal.forEach(item=>{
   }
 });
 
-</script>
-<script type="text/javascript">
-var NGComments = ["死ね","バカ",".exe","アホ","クソ"]; // 簡易的なNGワードの設定
-var regex = new RegExp(NGComments.join("|"));
-function test(wcheck) {
-	if (wcheck.match(regex) != null) {
-		alert("ERROR: コメントにNGワードが含まれています");
-		return false;
-	}
-	document.getElementById("submitbutton").disabled = true;
-	textareas = document.getElementsByTagName('textarea');
-	inputs = document.getElementsByTagName('input');
-	return submitted=!0;
+<script>
+var NGComments = ["死ね","バカ","アホ","クソ",".exe"]; // NGワード
+var regex = new RegExp(NGComments.join("|"), "i");
+let lastSubmitTime = 0;
+function test(){
+let comment = document.querySelector("textarea").value;
+let now = Date.now();
+
+// NGワードチェック
+if(regex.test(comment)){
+	alert("ERROR: コメントにNGワードが含まれています");
+	return false;
+}
+
+// URLスパム対策
+if(comment.includes("http")){
+	alert("ERROR: URLは投稿できません");
+	return false;
+}
+
+// 文字数制限
+if(comment.length > 300){
+	alert("コメントは300文字以内です");
+	return false;
+}
+
+// 同じコメント防止
+if(localStorage.getItem("lastComment") === comment){
+	alert("同じコメントは投稿できません");
+	return false;
+}
+localStorage.setItem("lastComment", comment);
+
+// 連続投稿防止（10秒）
+if(now - lastSubmitTime < 10000){
+	alert("少し待ってから投稿してください");
+	return false;
+}
+
+lastSubmitTime = now;
+// 送信ボタンロック
+document.getElementById("submitbutton").disabled = true;
+return true;
 }
 </script>
 </body>
