@@ -538,10 +538,10 @@ d3.csv("https://docs.google.com/spreadsheets/d/1zANzq3Jah4V7fVqmaRr4TH5alno0RKA5
 	}
 	var text = "";
 	for(var i=0; i<data.length; i++){
-		var name = replaceText(data[i].Name);
-		var mail = replaceText(data[i].Mail);
-		var timestamp = replaceText(data[i].Timestamp);
-		var comments = replaceText(data[i].Comments);
+		var name = replaceText(data[i]["名前(必須)"]);
+		var mail = replaceText(data[i]["メールアドレス(任意)"]);
+		var timestamp = replaceText(data[i]["タイムスタンプ"]);
+		var comments = replaceText(data[i]["コメント(必須)"]);
 		text += i+1 + " 名前: <a href=\"mailto:" + mail + "\">" + name + "</a> " + timestamp + "<pre>" + comments + "</pre>";
 	}
 	d3.select("#comments").html(text);
