@@ -507,7 +507,7 @@ background:#2a5298;
   <a href="history.html">沿革を見る →</a>
   <a href="member.html">メンバー紹介を見る →</a>
 </div></section>
-<section class="card fade-in">
+<section class="card fade-in"><h2>コメント送信</h2>
 <div class="form-box">
 <form action="https://docs.google.com/forms/d/e/1FAIpQLSdDZKwcmcmU34WUhhLeMNtN-_dvu8KA1xxyE4QhfpwOgFd8uQ/formResponse"
 method="post"
@@ -524,8 +524,8 @@ onsubmit="submitted=true;">
 let submitted = false;
 </script>
 <iframe name="hidden_iframe" style="display:none;" onload="if(submitted){document.getElementById('thanks').style.display='block';}">
-</iframe></section>
-<section class="card fade-in"><h2>コメント</h2>
+</iframe>
+<h2>みんなのコメント</h2>
 <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <div id="comments"></div>
 <script>
@@ -838,7 +838,6 @@ if(now - lastSubmitTime < 10000){
 	alert("少し待ってから投稿してください");
 	return false;
 }
-
 lastSubmitTime = now;
 // 送信ボタンロック
 document.getElementById("submitbutton").disabled = true;
