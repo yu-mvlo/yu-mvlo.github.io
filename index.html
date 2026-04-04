@@ -525,6 +525,7 @@ let submitted = false;
 </script>
 <iframe name="hidden_iframe" style="display:none;" onload="if(submitted){document.getElementById('thanks').style.display='block';}">
 </iframe></section>
+<section class="card fade-in"><h2>コメント</h2>
 <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <div id="comments"></div>
 <script>
@@ -546,6 +547,7 @@ text += i+1 + " 名前: <a href=\"mailto:" + mail + "\">" + name + "</a> " + tim
 d3.select("#comments").html(text);
 });
 </script>
+</section>
 <button id="backToTop">↑</button>
 <footer class="footer">
 <div class="footer-container">
