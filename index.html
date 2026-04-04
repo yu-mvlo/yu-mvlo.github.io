@@ -507,11 +507,12 @@ background:#2a5298;
   <a href="history.html">沿革を見る →</a>
   <a href="member.html">メンバー紹介を見る →</a>
 </div></section>
+<section class="card fade-in">
 <div class="form-box">
 <form action="https://docs.google.com/forms/d/e/1FAIpQLSdDZKwcmcmU34WUhhLeMNtN-_dvu8KA1xxyE4QhfpwOgFd8uQ/formResponse"
 method="post"
 target="hidden_iframe"
-onsubmit="return test()">
+onsubmit="submitted=true;">
 <input name="entry.1305317978" placeholder="名前" required>
 <input name="entry.1029779029" placeholder="メールアドレス" type="email">
 <textarea name="entry.380796284" placeholder="コメント" rows="5" maxlength="300" required></textarea>
@@ -519,7 +520,12 @@ onsubmit="return test()">
 </form>
 <p id="thanks" style="display:none;">コメントは正常に送信されました。コメントありがとうございます。</p>
 </div>
-<iframe name="hidden_iframe" style="display:none;" onload="if(submitted){document.getElementById('thanks').style.display='block';}"></iframe>
+<script>
+let submitted = false;
+</script>
+<iframe name="hidden_iframe" style="display:none;" onload="if(submitted){document.getElementById('thanks').style.display='block';}">
+</iframe></section>
+<section class="card fade-in">
 <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <div id="comments"></div>
 <script>
@@ -540,7 +546,7 @@ d3.csv("https://docs.google.com/spreadsheets/d/1zANzq3Jah4V7fVqmaRr4TH5alno0RKA5
 	}
 	d3.select("#comments").html(text);
 });
-</script>
+</script></section>
 <button id="backToTop">↑</button>
 <footer class="footer">
 <div class="footer-container">
@@ -794,7 +800,6 @@ normal.forEach(item=>{
   }
 });
 
-let submitted = false;
 var NGComments = ["死ね","バカ","アホ","クソ",".exe"]; // NGワード
 var regex = new RegExp(NGComments.join("|"), "i");
 let lastSubmitTime = 0;
