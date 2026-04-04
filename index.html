@@ -466,6 +466,42 @@ font-size:16px;
   <a href="history.html">沿革を見る →</a>
   <a href="member.html">メンバー紹介を見る →</a>
 </div></section>
+<button id="backToTop">↑</button>
+<footer class="footer">
+<div class="footer-container">
+<div class="footer-column">
+<h3>Mario vs Luigi Online 同好会公式サイト</h3>
+<p>「Mario vs Luigi Online」を楽しむコミュニティ</p>
+<a href="https://ipodtouch0218.itch.io/nsmb-mariovsluigi" target="_blank"><img src="https://cdn2.steamgriddb.com/logo_thumb/7882fa96d3b276cffe67fb3dd5c9deb7.png"></a>
+</div>
+<div class="footer-column">
+<h3>ページ</h3>
+<ul>
+<li><a href="index.html">ホーム</a></li>
+<li><a href="member.html">メンバー</a></li>
+<li><a href="history.html">沿革</a></li>
+<li><a href="regulations.html">憲法(規定)</a></li>
+<li><a href="tournament.html">大会開催の沿革と予定</a></li>
+</ul></div>
+<div class="discord-box">
+<h3>Discordサーバー参加</h3>
+<p>同好会公式Discordはこちら</p>
+<a href="https://discord.gg/mCdQGTxTQy" class="discord-button">
+Discordサーバーに参加
+</a></div>
+<div class="footer-bottom">
+<p>© 2025 Mario vs Luigi Online 同好会</p>
+</div>
+</footer>
+
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSdDZKwcmcmU34WUhhLeMNtN-_dvu8KA1xxyE4QhfpwOgFd8uQ/formResponse" target="hidden_iframe" method="post" onsubmit="return test(this.wcheck.value)">
+<p><input name="1305317978" placeholder="名前" value="名無し" required></p>
+<p><input name="1029779029" placeholder="メールアドレス" type="email"></p>
+<p><textarea name="380796284" placeholder="コメント" rows="10" cols="40" maxlength="300" id="wcheck" required></textarea></p>
+<input type="submit" id="submitbutton" value="送信">
+</form>
+<iframe onload='if(submitted){window.location="";}' id=hidden_iframe name=hidden_iframe style=display:none></iframe>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
@@ -693,33 +729,20 @@ normal.forEach(item=>{
 });
 
 </script>
-<button id="backToTop">↑</button>
-<footer class="footer">
-<div class="footer-container">
-<div class="footer-column">
-<h3>Mario vs Luigi Online 同好会公式サイト</h3>
-<p>「Mario vs Luigi Online」を楽しむコミュニティ</p>
-<a href="https://ipodtouch0218.itch.io/nsmb-mariovsluigi" target="_blank"><img src="https://cdn2.steamgriddb.com/logo_thumb/7882fa96d3b276cffe67fb3dd5c9deb7.png"></a>
-</div>
-<div class="footer-column">
-<h3>ページ</h3>
-<ul>
-<li><a href="index.html">ホーム</a></li>
-<li><a href="member.html">メンバー</a></li>
-<li><a href="history.html">沿革</a></li>
-<li><a href="regulations.html">憲法(規定)</a></li>
-<li><a href="tournament.html">大会開催の沿革と予定</a></li>
-</ul></div>
-<div class="discord-box">
-<h3>Discordサーバー参加</h3>
-<p>同好会公式Discordはこちら</p>
-<a href="https://discord.gg/mCdQGTxTQy" class="discord-button">
-Discordサーバーに参加
-</a></div>
-<div class="footer-bottom">
-<p>© 2025 Mario vs Luigi Online 同好会</p>
-</div>
-</footer>
+<script type="text/javascript">
+var NGComments = ["死ね","バカ",".exe","アホ","クソ","f**k"]; // 簡易的なNGワードの設定
+var regex = new RegExp(NGComments.join("|"));
+function test(wcheck) {
+	if (wcheck.match(regex) != null) {
+		alert("ERROR: コメントにNGワードが含まれています");
+		return false;
+	}
+	document.getElementById("submitbutton").disabled = true;
+	textareas = document.getElementsByTagName('textarea');
+	inputs = document.getElementsByTagName('input');
+	return submitted=!0;
+}
+</script>
 </body>
 
 </html>
