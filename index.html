@@ -316,6 +316,16 @@ justify-content:center;
 .news-list li{
   padding:10px 0;
   border-bottom:1px solid #eee;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.news-date{
+  color:#888;
+  font-size:12px;
+  white-space:nowrap;
+  margin-left:10px;
 }
 
 .pinned{
@@ -834,7 +844,17 @@ normal.forEach(item=>{
   }
 });
 
-var NGComments = ["死ね","バカ","アホ","クソ",".exe"]; // NGワード
+items.forEach(item=>{
+  if(!item.dataset.date) return;
+
+  const date=document.createElement("span");
+  date.className="news-date";
+  date.textContent=item.dataset.date;
+
+  item.appendChild(date);
+});
+
+var NGComments = ["死ね","バカ","アホ","クソ",".exe","https"]; // NGワード
 var regex = new RegExp(NGComments.join("|"), "i");
 let lastSubmitTime = 0;
 function test(){
