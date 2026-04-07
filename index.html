@@ -581,24 +581,41 @@ let submitted = false;
 <iframe name="hidden_iframe" style="display:none;" onload="if(submitted){document.getElementById('thanks').style.display='block';}">
 </iframe>
 <h1>みんなのコメント</h1>
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
 <div id="comments"></div>
 <script>
-d3.csv("https://docs.google.com/spreadsheets/d/1zANzq3Jah4V7fVqmaRr4TH5alno0RKA5kWpI5cRMUcs/export?format=csv&range=A3:D", function(error, data){
-function replaceText(text){
-return text
-.replace(/</g, "&lt;")
+function sanitize(text){
+  if(!text) return "";
+  return text
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#39;");
+}
+
+d3.csv("https://docs.google.com/spreadsheets/d/1zANzq3Jah4V7fVqmaRr4TH5alno0RKA5kWpI5cRMUcs/export?format=csv&range=A3:D", function(error,data){
+
+if(error){
+  console.error("CSV読み込みエラー",error);
+  return;
 }
 
 var text = "";
+
 for(var i=0;i<data.length;i++){
-var timestamp = replaceText(data[i][Object.keys(data[i])[0]]);
-var name = replaceText(data[i][Object.keys(data[i])[1]]);
-var mail = replaceText(data[i][Object.keys(data[i])[2]]);
-var comments = replaceText(data[i][Object.keys(data[i])[3]]);
-text += i+1 + " 名前: <a href=\"mailto:" + mail + "\">" + name + "</a> " + timestamp + "<pre>" + comments + "</pre>";
+  var keys = Object.keys(data[i]);
+
+  var timestamp = sanitize(data[i][keys[0]]);
+  var name = sanitize(data[i][keys[1]]);
+  var mail = sanitize(data[i][keys[2]]);
+  var comments = sanitize(data[i][keys[3]]);
+
+  text += (i+1) + " 名前: <a href='mailto:" + mail + "'>" + name + "</a> " + timestamp;
+  text += "<pre>" + comments + "</pre>";
 }
-d3.select("#comments").html(text);
+
+document.getElementById("comments").innerHTML = text;
 });
 </script></section></div>
 <button id="backToTop">↑</button>
@@ -866,48 +883,66 @@ items.forEach(item=>{
   item.appendChild(date);
 });
 
-var NGComments = ["死ね","バカ","アホ","クソ",".exe","https"]; // NGワード
-var regex = new RegExp(NGComments.join("|"), "i");
-let lastSubmitTime = 0;
-function test(){
-let comment = document.querySelector("textarea").value;
-let now = Date.now();
+const NGWords = ["死ね","バカ","アホ","クソ",".exe"];
 
-// NGワードチェック
-if(regex.test(comment)){
-	alert("ERROR: コメントにNGワードが含まれています");
-	return false;
-}
-
-// URLスパム対策
-if(comment.includes("http")){
-	alert("ERROR: URLは投稿できません");
-	return false;
+function sanitize(text){
+  if(!text) return "";
+  return text
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#39;");
 }
 
-// 文字数制限
-if(comment.length > 300){
-	alert("コメントは300文字以内です");
-	return false;
+function containsNG(text){
+  return NGWords.some(word => text.includes(word));
 }
 
-// 同じコメント防止
-if(localStorage.getItem("lastComment") === comment){
-	alert("同じコメントは投稿できません");
-	return false;
-}
-localStorage.setItem("lastComment", comment);
+d3.csv("https://docs.google.com/spreadsheets/d/1zANzq3Jah4V7fVqmaRr4TH5alno0RKA5kWpI5cRMUcs/export?format=csv&range=A2:D", function(error,data){
 
-// 連続投稿防止（10秒）
-if(now - lastSubmitTime < 10000){
-	alert("少し待ってから投稿してください");
-	return false;
+if(error){
+  console.error("CSV読み込みエラー",error);
+  return;
 }
-lastSubmitTime = now;
-// 送信ボタンロック
-document.getElementById("submitbutton").disabled = true;
-return true;
-}
+
+data.reverse();
+
+const container = document.getElementById("comments");
+
+data.forEach((row,i)=>{
+
+  const keys = Object.keys(row);
+
+  let timestamp = row[keys[0]];
+  let name = row[keys[1]];
+  let mail = row[keys[2]];
+  let comment = row[keys[3]];
+
+  comment = sanitize(comment);
+  name = sanitize(name);
+
+  if(containsNG(comment)){
+    comment = "※不適切な内容のため表示できません";
+  }
+
+  const box = document.createElement("div");
+  box.className = "comment";
+
+  const header = document.createElement("div");
+  header.className = "comment-header";
+  header.textContent = (i+1) + " 名前: " + name + "  " + timestamp;
+
+  const body = document.createElement("pre");
+  body.className = "comment-body";
+  body.textContent = comment;
+
+  box.appendChild(header);
+  box.appendChild(body);
+
+  container.appendChild(box);
+
+});
 </script>
 </body>
 
