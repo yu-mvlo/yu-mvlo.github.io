@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+
+<html lang="en" theme="light">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Mario vs Luigi Online 同好会公式サイト - お知らせ
+    </title>
+<style>
+* {
+  box-sizing: border-box;
+}
+	
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background: #f4f6fa;
+}
+
+.container {
+  width:　100%;
+　overflow-wrap: break-word;
+  word-break: break-word;
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
+	
+section {
+  background: white;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 12px;
+}
+
+	img {
+  max-width: 100%;
+  height: auto;
+}
+
+nav {
+  background: rgba(30, 60, 114, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background 0.3s ease;
+}
+
+nav.scrolled {
+  background: #1e3c72;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.nav-links a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  opacity: 0.7;
+}
+
+	html {
+  scroll-behavior: smooth;
+}
+
+	.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+	.nav-links a {
+  position: relative;
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+	
+	.nav-links a.active {
+  font-weight: bold;
+}
+
+.nav-links a.active::after {
+  width: 100%;
+}
+
+	.menu-toggle {
+  display: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #1e3c72;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 20px;
+  }
+
+  .nav-links a {
+    margin: 10px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+	.nav-links {
+  display: none;
+}
+
+  .nav-links.show {
+    display: flex;
+  }
+}
+
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #1e3c72;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+#backToTop.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+	.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.footer{
+background:#1f1f1f;
+color:white;
+padding:40px 20px;
+}
+
+.footer-container{
+display:flex;
+justify-content:space-between;
+max-width:1000px;
+margin:auto;
+flex-wrap:wrap;
+}
+
+.footer-column{
+width:250px;
+margin-bottom:20px;
+}
+
+.footer-column h3{
+margin-bottom:10px;
+}
+
+.footer-column ul{
+list-style:none;
+padding:0;
+}
+
+.footer-column a{
+color:#ccc;
+text-decoration:none;
+}
+
+.footer-column a:hover{
+color:white;
+}
+
+.footer-bottom{
+border-top:1px solid #444;
+margin-top:20px;
+padding-top:10px;
+text-align:center;
+color:#aaa;
+}
+
+/* SNSアイコン */
+
+.sns-icons a{
+display:flex;
+align-items:center;
+gap:8px;
+margin-bottom:10px;
+}
+
+.sns-icons img{
+width:24px;
+height:24px;
+}
+
+/* スマホ対応 */
+
+@media (max-width:700px){
+
+.footer-container{
+flex-direction:column;
+text-align:center;
+}
+
+.footer-column{
+width:100%;
+}
+
+.sns-icons a{
+justify-content:center;
+}
+
+}
+
+.home-buttons {
+  margin-top: 30px;
+}
+
+.main-button {
+  display: inline-block;
+  margin: 10px;
+  padding: 14px 26px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+
+  background: linear-gradient(135deg,#1e3c72,#2a5298);
+
+  border-radius: 10px;
+
+  transition: all 0.3s ease;
+}
+
+.main-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+}
+
+.discord-box{
+text-align:center;
+padding:40px 20px;
+}
+
+.discord-button{
+display:inline-block;
+background:#5865F2;
+color:white;
+padding:14px 28px;
+font-size:18px;
+border-radius:8px;
+text-decoration:none;
+transition:0.3s;
+}
+
+.discord-button:hover{
+background:#4752c4;
+transform:scale(1.05);
+box-shadow:0 6px 20px rgba(0,0,0,0.3);
+}
+
+@media (max-width:600px){
+
+.discord-button{
+width:80%;
+font-size:16px;
+}
+
+}
+
+.warning{
+background:#fff8e1;
+border:2px solid #ff9800;
+padding:15px;
+border-radius:10px;
+font-weight:bold;
+}
+</style>
+</head>
+<body>
+	<div id="top"></div>
+	<nav>
+  <div class="nav-container">
+     <a href="index.html" class="logo">Mario vs Luigi Online 同好会公式サイト</a>
+
+    <div class="menu-toggle">☰</div>
+
+    <div class="nav-links">
+	　<a href="history.html">沿革</a>
+      <a href="member.html">メンバー紹介</a>
+    </div>
+  </div>
+</nav>
+<div class="container">
+<h1 id="公式サイト一般公開について" data-id="公式サイト一般公開について"><a class="anchor hidden-xs" href="#公式サイト一般公開について" title="公式サイト一般公開について"><span class="octicon octicon-link ph ph-link-simple-horizontal"></span></a><span>公式サイト一般公開について</span></h1><hr>
+<h2 id="編集2026年3月30日" data-id="編集2026年3月30日"><a class="anchor hidden-xs" href="#編集2026年3月30日" title="編集2026年3月30日"><span class="octicon octicon-link ph ph-link-simple-horizontal"></span></a><span>編集:2026年3月30日</span></h2>
+<p><span>本同好会の所属メンバーと協議を行った結果、「Mario vs Luigi Online 同好会公式サイト」(以下当サイト)を一般公開する承認を得ましたので、2026年4月1日12:00から当サイトを一般向けに公開します。</span><br>
+<span>具体的な公開方法は同好会所属メンバーのSNS(YouTube・X等)での紹介・拡散を想定しています。</span><br>
+<span>また、当サイトが運用不可(荒らし・サーバー問題・管理者問題)になった場合は公開を停止します。</span></p></div>
+<footer class="footer">
+<div class="footer-container">
+<div class="footer-column">
+<h3>Mario vs Luigi Online 同好会公式サイト</h3>
+<p>「Mario vs Luigi Online」を楽しむコミュニティ</p>
+<a href="https://ipodtouch0218.itch.io/nsmb-mariovsluigi" target="_blank"><img src="https://cdn2.steamgriddb.com/logo_thumb/7882fa96d3b276cffe67fb3dd5c9deb7.png"></a>
+</div>
+<div class="footer-column">
+<h3>ページ</h3>
+<ul>
+<li><a href="index.html">ホーム</a></li>
+<li><a href="member.html">メンバー</a></li>
+<li><a href="history.html">沿革</a></li>
+<li><a href="regulations.html">憲法(規定)</a></li>
+<li><a href="tournament.html">大会開催の沿革と予定</a></li>
+</ul></div>
+<div class="discord-box">
+<h3>Discordサーバー参加</h3>
+<p>同好会公式Discordはこちら</p>
+<a href="https://discord.gg/mCdQGTxTQy" class="discord-button">
+Discordサーバーに参加
+</a></div>
+<div class="footer-bottom">
+<p>© 2025 Mario vs Luigi Online 同好会</p>
+</div>
+</footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+			if (!markdown.length) return;
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+		
+window.addEventListener("scroll", function() {
+  const nav = document.querySelector("nav");
+  if (window.scrollY > 50) {
+    nav.classList.add("scrolled");
+  } else {
+    nav.classList.remove("scrolled");
+  }
+});
+
+		const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-links a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    if (scrollY >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(a => {
+    a.classList.remove("active");
+    if (a.getAttribute("href") === "#" + current) {
+      a.classList.add("active");
+    }
+  });
+});
+
+	document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.querySelector(".menu-toggle");
+    const navMenu = document.querySelector(".nav-links");
+
+    toggle.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
+    });
+  });	
+
+		const fadeElements = document.querySelectorAll(".fade-in");
+
+window.addEventListener("scroll", () => {
+  fadeElements.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (elementTop < windowHeight - 100) {
+      el.classList.add("show");
+    }
+  });
+});
+
+const list = document.querySelector(".news-list");
+const items = Array.from(list.children);
+
+const pinned = items.filter(i => i.classList.contains("pinned"));
+const normal = items.filter(i => i.dataset.date);
+
+normal.sort((a,b)=>{
+  return new Date(b.dataset.date) - new Date(a.dataset.date);
+});
+
+list.innerHTML = "";
+[...pinned,...normal].forEach(i=>list.appendChild(i));
+
+const now = new Date();
+
+normal.forEach(item=>{
+  const date = new Date(item.dataset.date);
+  const diff = (now-date)/(1000*60*60*24);
+
+  if(diff<=7){
+    const badge=document.createElement("span");
+    badge.textContent="NEW";
+    badge.className="new-badge";
+    item.appendChild(badge);
+  }
+});
+
+    </script>
+</body>
+
+</html>
