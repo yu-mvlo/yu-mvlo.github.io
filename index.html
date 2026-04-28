@@ -581,7 +581,7 @@ for(var i=0;i<data.length;i++){
   var comments = sanitize(data[i][keys[3]]);
 
   text += (i+1) + " 名前: <a href='mailto:" + mail + "'>" + name + "</a> " + timestamp;
-  text += "<pre>" + comments + "</pre>";
+  text += "<div>" + comments.replace(/\n/g, "<br>") + "</div>";
 }
 
 document.getElementById("comments").innerHTML = text;
